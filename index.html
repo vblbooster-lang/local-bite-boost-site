@@ -1,0 +1,440 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Bite Boost — Restaurant Growth in 48h</title>
+  <meta name="description" content="Menus fixed. Google updated. QR menu + 10 social posts — delivered in 48 hours for cafés & restaurants.">
+  <meta property="og:title" content="Local Bite Boost — Restaurant Growth in 48h">
+  <meta property="og:description" content="Menus fixed. Google updated. QR menu + 10 social posts — delivered in 48 hours for cafés & restaurants.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#070c12; --card:#0e1626; --muted:#93a6c2; --accent:#0a7cff; --ring:rgba(10,124,255,.25);
+      --fg:#eaf2ff; --ok:#10b981; --err:#ef4444; --border:#1a2740; --gold:#ffc64b;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:radial-gradient(1400px 1000px at 10% -10%, #0e1b31 0%, transparent 35%),radial-gradient(1000px 900px at 115% -15%, #0b1a36 0%, transparent 40%), var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:#c8dcff} a:hover{color:#e1ecff}
+    .wrap{max-width:1140px;margin:0 auto;padding:24px}
+    .bar{position:sticky;top:0;z-index:70;background:linear-gradient(90deg,#0a1526, #0a1b34);border-bottom:1px solid var(--border);padding:8px 16px;text-align:center;font-weight:600}
+    .bar b{color:#9fd1ff}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0;position:sticky;top:40px;background:linear-gradient(180deg,rgba(10,15,22,.95),rgba(10,15,22,.6),transparent);backdrop-filter:blur(6px);z-index:60}
+    .brand{display:flex;gap:10px;align-items:center}
+    .brand img{width:46px;height:46px;border-radius:10px;border:1px solid var(--border);background:#0f172a}
+    .badge{background:#12263a;color:#8cc3ff;padding:4px 10px;border-radius:999px;font-size:12px;display:inline-block}
+    .shield{display:inline-flex;align-items:center;gap:8px;background:#0a1b34;border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px}
+    .btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid #1e293b;background:linear-gradient(180deg,#0b5bd9,#0a7cff);box-shadow:0 12px 28px rgba(10,124,255,.28);color:#fff;transition:.15s}
+    .btn.secondary{background:#12263a;color:#8cc3ff;border-color:#1e293b;box-shadow:none}
+    .btn.ghost{background:transparent;border-color:#1e293b;color:#eaf2ff}
+    .btn.gold{background:linear-gradient(180deg,#ffd36d,#ffbe3d);color:#1a1500;border:0;box-shadow:0 12px 26px rgba(255,190,61,.25)}
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+    header.hero{display:grid;grid-template-columns:1.08fr .92fr;gap:24px;align-items:center;margin:18px 0 34px}
+    .h1{font-size:50px;font-weight:800;line-height:1.06;margin:10px 0 8px}
+    .lead{color:var(--muted);font-size:18px}
+    .heroimg{width:100%;height:460px;border-radius:22px;border:1px solid var(--border);object-fit:cover;box-shadow:0 18px 44px rgba(0,0,0,.38)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:linear-gradient(180deg,rgba(20,25,40,.55),rgba(15,23,42,.92));border:1px solid var(--border);border-radius:18px;padding:18px}
+    h3{margin:6px 0 8px}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+    .kpi{background:#0d1324;border:1px solid #16223a;padding:12px;border-radius:12px;text-align:center}
+    .kpi b{font-size:22px}
+    footer{margin:56px 0 12px;text-align:center;color:var(--muted);font-size:14px}
+    .faq details{background:#0d1324;border:1px solid #16223a;border-radius:12px;padding:12px}
+    .faq summary{font-weight:600;cursor:pointer}
+    /* Pricing */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+    .plan{background:linear-gradient(180deg,#0f172a,#0c1526);border:1px solid var(--border);border-radius:18px;padding:18px;position:relative}
+    .plan .price{font-size:38px;font-weight:800;margin:0 0 10px}
+    .plan ul{margin:0 0 10px 18px}
+    .plan.best{box-shadow:0 0 0 2px rgba(10,124,255,.75), 0 22px 46px rgba(10,124,255,.25)}
+    .ribbon{position:absolute;top:14px;right:14px;background:#062a56;color:#9bd1ff;padding:4px 10px;border-radius:999px;font-size:12px}
+    .guarantee{display:flex;gap:12px;align-items:center;background:#0a1b34;border:1px solid var(--border);padding:12px 14px;border-radius:14px}
+    /* Modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,6,10,.6);backdrop-filter:blur(6px);z-index:100}
+    .modal.open{display:flex}
+    .modal .panel{width:min(780px,92vw);background:var(--card);border:1px solid var(--border);border-radius:18px;padding:14px 16px 16px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    label{font-size:12px;color:#b7c7e2}
+    input,select,textarea{width:100%;padding:12px 12px;border-radius:12px;border:1px solid #243449;background:#0b1223;color:var(--fg);outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px var(--ring)}
+    textarea{min-height:110px;resize:vertical}
+    .note{font-size:12px;color:var(--muted)}
+    .toast{position:fixed;right:16px;bottom:16px;background:#0d1324;color:var(--fg);border:1px solid #16223a;border-radius:12px;padding:10px 14px;display:none}
+    .toast.ok{border-color:#164e3a}
+    .hide-m{display:block}
+    @media(max-width:980px){
+      header.hero{grid-template-columns:1fr}
+      .grid,.pricing{grid-template-columns:1fr}
+      .hide-m{display:none}
+    }
+    /* Uploadcare widget theming */
+    .uploadcare--widget__button_type_open,
+    .uploadcare--widget__button_type_open:hover{
+      background:linear-gradient(180deg,#0b5bd9,#0a7cff) !important;
+      border-radius:12px !important;
+      color:#fff !important;
+      border:none !important;
+      padding:10px 14px !important;
+      box-shadow:0 10px 24px rgba(10,124,255,.25) !important;
+    }
+    .uploadcare--widget__button_type_remove{background:#12263a !important;color:#8cc3ff !important;border-radius:10px !important}
+    .uploadcare--progress_type_canvas{border-radius:8px !important}
+    /* Reveal animation */
+    .reveal{opacity:0;transform:translateY(8px);transition:.5s ease}
+    .reveal.show{opacity:1;transform:none}
+    /* Sticky mobile CTA */
+    .sticky-cta{position:fixed;left:0;right:0;bottom:12px;display:none;justify-content:center;z-index:60}
+    .sticky-cta .btn{padding:14px 20px;border-radius:999px}
+    @media(max-width:720px){ .sticky-cta{display:flex} }
+    /* Comparison table */
+    table.compare{width:100%;border-collapse:collapse}
+    table.compare th, table.compare td{border:1px solid var(--border);padding:10px 12px}
+    table.compare th{background:#0b1424}
+    table.compare tr:nth-child(even){background:#0b1322}
+  </style>
+</head>
+<body>
+  <div class="bar">🚀 <b id="slots">3</b> slots left for this week • Free same-day mockup if you start before <span id="deadline"></span></div>
+  <div class="wrap">
+    <!-- NAV -->
+    <div class="nav">
+      <div class="brand">
+        <img src="Local_Bite_Boost_logo.png" alt="Local Bite Boost logo">
+        <div>
+          <div class="badge">48-hour turnaround</div>
+          <div style="font-weight:800">Local Bite Boost</div>
+        </div>
+      </div>
+      <div>
+        <a class="btn ghost" href="#packages">Packages</a>
+        <a class="btn gold" id="open-intake">Book a Free Mockup</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="reveal">
+        <div class="shield">⭐️ 5/5 from early clients • 🔒 Money-back if not delivered in 48h</div>
+        <h1 class="h1">Menus fixed. Google updated.<br>QR menu + 10 social posts in <u>48 hours</u>.</h1>
+        <p class="lead">Choose a flat package and get marketing that actually sells: cleaned-up menu, QR menu, a refreshed Google Business Profile, and 10 ready-to-post social updates—done for you this week.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn gold" id="open-intake-2">Get a Free Mockup</a>
+          <a class="btn secondary" href="tel:+610449620818">Call 0449 620 818</a>
+          <a class="btn ghost" href="https://buy.stripe.com/4gM4gzgXofbo3ffayu5os02" target="_blank" rel="noopener">Pay $149 – Google Fix Only</a>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><b>48h</b><div>Delivery</div></div>
+          <div class="kpi"><b>$399</b><div>Starter Pack</div></div>
+          <div class="kpi"><b>Flat</b><div>Pricing</div></div>
+        </div>
+        <div class="guarantee"><span>✅</span> <div><b>48-Hour Guarantee.</b> If we can’t deliver your pack within 48 hours of assets received, we’ll refund you.</div></div>
+      </div>
+      <img class="heroimg reveal" src="hero_local_bite_boost.jpg" alt="Local Bite Boost sample">
+    </header>
+
+    <!-- FEATURES -->
+    <section class="grid reveal" id="packages">
+      <div class="card">
+        <h3>What You Get</h3>
+        <ul>
+          <li>QR menu + print-ready table tent (PDF)</li>
+          <li>Menu clean-up & price formatting</li>
+          <li>Google Business Profile refresh</li>
+          <li>10 social posts (images + captions)</li>
+          <li>Hiring post (ready to share)</li>
+          <li>Review-reply templates (pos/neg)</li>
+          <li>One-page mini-site with map & CTA</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Why it works</h3>
+        <p>Clear menus reduce friction. Updated Google listings drive discovery. Consistent posts keep you top-of-mind. We package all of this—fast.</p>
+        <p class="note">48-hour delivery or you don’t pay.</p>
+      </div>
+      <div class="card faq">
+        <h3>FAQ</h3>
+        <details open><summary>Do you visit in person?</summary><div>Most work is remote. We can visit CBD & inner suburbs if needed.</div></details>
+        <details><summary>What if I don’t like it?</summary><div>We’ll fix it or refund—simple.</div></details>
+        <details><summary>Do you do bilingual?</summary><div>Yes—English/Vietnamese included in the $599 option.</div></details>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing reveal">
+      <div class="plan">
+        <div class="ribbon">Best value</div>
+        <h3>Booster</h3>
+        <div class="price">$399</div>
+        <ul>
+          <li>Everything listed</li>
+          <li>1 week of posts scheduled</li>
+        </ul>
+        <a class="btn" href="https://buy.stripe.com/28EeVd22u4wK3ff5ea5os00" target="_blank" rel="noopener" data-dec="slots">Pay $399</a>
+      </div>
+      <div class="plan best">
+        <div class="ribbon">Most popular</div>
+        <h3>Booster+</h3>
+        <div class="price">$599</div>
+        <ul>
+          <li>Everything in Booster</li>
+          <li>Bilingual assets (EN↔VN)</li>
+          <li>2 weeks of posts scheduled</li>
+        </ul>
+        <a class="btn" href="https://buy.stripe.com/3cIdR9fTk6ES6rr3625os01" target="_blank" rel="noopener" data-dec="slots">Pay $599</a>
+      </div>
+      <div class="plan">
+        <h3>Google Fix Only</h3>
+        <div class="price">$149</div>
+        <ul>
+          <li>Update hours, categories</li>
+          <li>Menu link & About copy</li>
+          <li>Upload 5 photos + 3 replies</li>
+        </ul>
+        <a class="btn secondary" href="https://buy.stripe.com/4gM4gzgXofbo3ffayu5os02" target="_blank" rel="noopener" data-dec="slots">Pay $149</a>
+      </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="card reveal" style="margin-top:18px">
+      <h3>Why cafés choose Local Bite Boost</h3>
+      <table class="compare">
+        <tr><th></th><th>Local Bite Boost</th><th>Freelancer (random)</th><th>Big agency</th></tr>
+        <tr><td>Speed</td><td><b>48 hours</b> delivery</td><td>1–2 weeks</td><td>2–6 weeks</td></tr>
+        <tr><td>Menu cleanup</td><td>Included</td><td>Extra</td><td>Extra</td></tr>
+        <tr><td>Google Business refresh</td><td>Included</td><td>Maybe</td><td>Extra</td></tr>
+        <tr><td>10 social posts</td><td>Included</td><td>Maybe</td><td>Often not</td></tr>
+        <tr><td>Price</td><td><b>Flat $399–$599</b></td><td>Unclear</td><td>High retainers</td></tr>
+        <tr><td>Guarantee</td><td><b>48-hour or refund</b></td><td>None</td><td>None</td></tr>
+      </table>
+    </section>
+
+    <!-- PROCESS + CTA -->
+    <section class="grid reveal" style="margin-top:18px">
+      <div class="card">
+        <h3>How it works (today)</h3>
+        <ol>
+          <li>Send your menu photos & logo (or just take a photo).</li>
+          <li>We share a preview the same day.</li>
+          <li>You approve → we deliver the full pack in 48h.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>Need help choosing?</h3>
+        <p>DM us on Instagram or call and we’ll recommend the right plan in one minute.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <a class="btn gold" id="open-intake-3">Start free mockup</a>
+          <a class="btn secondary" href="tel:+610449620818">Call now</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>What we’ll need</h3>
+        <ul>
+          <li>Your menu (photo/PDF) & logo</li>
+          <li>Business name, suburb, phone</li>
+          <li>Any specials you want to promote</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>© Local Bite Boost — ABN on request. Built with GitHub Pages.</footer>
+  </div>
+
+  <!-- Sticky mobile CTA -->
+  <div class="sticky-cta"><a class="btn gold" id="open-intake-4">Start your free mockup</a></div>
+
+  <!-- INTAKE MODAL (onsite form with Uploadcare) -->
+  <div class="modal" id="modal">
+    <div class="panel">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="font-weight:800">Start your free mockup</div>
+        <button id="close" class="btn ghost" style="padding:8px 12px">Close</button>
+      </div>
+      <form id="leadform" class="ucare">
+        <div class="row">
+          <div>
+            <label>Business name</label>
+            <input name="business" required placeholder="e.g., Box Hill Noodle Bar">
+          </div>
+          <div>
+            <label>Contact name</label>
+            <input name="name" required placeholder="Your full name">
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Email</label>
+            <input name="email" type="email" required placeholder="name@email.com">
+          </div>
+          <div>
+            <label>Phone</label>
+            <input name="phone" required placeholder="04…">
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Suburb</label>
+            <input name="suburb" placeholder="e.g., Richmond">
+          </div>
+          <div>
+            <label>Instagram (optional)</label>
+            <input name="instagram" placeholder="@handle">
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Menu photos (up to 5 images)</label>
+            <input type="hidden"
+              role="uploadcare-uploader"
+              name="menu_photos"
+              data-public-key="655d7991aec56404bc98"
+              data-images-only="true"
+              data-multiple="true"
+              data-multiple-max="5"
+              data-preview-step="true"
+              data-image-shrink="1600x1600"
+              data-tabs="file url camera"
+              data-source-list="local, url, camera" />
+            <div class="note">Wait for the spinner to finish before sending.</div>
+          </div>
+          <div>
+            <label>Logo (PNG preferred)</label>
+            <input type="hidden"
+              role="uploadcare-uploader"
+              name="logo"
+              data-public-key="655d7991aec56404bc98"
+              data-images-only="true"
+              data-crop="1:1"
+              data-clearable="true"
+              data-preview-step="true" />
+          </div>
+        </div>
+        <div>
+          <label>Menu file (PDF or image)</label>
+          <input type="hidden"
+            role="uploadcare-uploader"
+            name="menu_file"
+            data-public-key="655d7991aec56404bc98"
+            data-preview-step="true"
+            data-clearable="true" />
+        </div>
+        <div class="row">
+          <div>
+            <label>Package</label>
+            <select name="package">
+              <option value="399">Booster — $399</option>
+              <option value="599">Booster+ — $599</option>
+              <option value="149">Google Fix Only — $149</option>
+              <option value="unsure" selected>Not sure yet</option>
+            </select>
+          </div>
+          <div>
+            <label>Bilingual assets?</label>
+            <select name="bilingual">
+              <option>No</option>
+              <option>Yes (EN↔VN)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label>Notes</label>
+          <textarea name="notes" placeholder="Anything we should know? Promotions this week?"></textarea>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px">
+          <button class="btn gold" type="submit">Send request</button>
+          <span class="note">We reply within hours. We’ll never share your details.</span>
+        </div>
+        <input type="hidden" name="source" value="Website modal form">
+      </form>
+      <p class="note" style="margin-top:8px">Uploads powered by Uploadcare.</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Uploadcare widget (with your public key) -->
+  <script>window.UPLOADCARE_PUBLIC_KEY="655d7991aec56404bc98";</script>
+  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" async></script>
+
+  <script>
+    // Reveal on scroll
+    const io=new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Modal controls
+    const modal = document.getElementById('modal');
+    const openers = ['open-intake','open-intake-2','open-intake-3','open-intake-4'].map(id=>document.getElementById(id));
+    const closeBtn = document.getElementById('close');
+    openers.forEach(btn=>btn && btn.addEventListener('click',()=>modal.classList.add('open')));
+    closeBtn.addEventListener('click',()=>modal.classList.remove('open'));
+    modal.addEventListener('click',e=>{ if(e.target===modal) modal.classList.remove('open'); });
+
+    // Urgency: today's deadline + faux limited slots
+    function updateDeadline(){
+      const d=new Date(); d.setHours(23,59,0,0);
+      const hh=String(d.getHours()).padStart(2,'0'), mm=String(d.getMinutes()).padStart(2,'0');
+      document.getElementById('deadline').textContent = `${hh}:${mm}`;
+    }
+    updateDeadline();
+    let slots = Math.floor(Math.random()*2)+3; // 3–4 slots
+    const slotsEl = document.getElementById('slots'); slotsEl.textContent = slots;
+    document.querySelectorAll('[data-dec="slots"]').forEach(a=>a.addEventListener('click',()=>{ if(slots>1){slots--; slotsEl.textContent=slots;} }));
+
+    // Wait for Uploadcare uploads to complete
+    function waitForUploads() {
+      const inputs = document.querySelectorAll('[role="uploadcare-uploader"]');
+      const waits = [];
+      inputs.forEach(inp => {
+        try {
+          const w = uploadcare.Widget(inp);
+          const v = w && w.value && w.value();
+          if (!v) return;
+          if (v.promise) waits.push(v.promise());
+          if (v.files) v.files().forEach(f => f.promise && waits.push(f.promise()));
+        } catch(e){}
+      });
+      return Promise.all(waits);
+    }
+
+    // Form submission — default to mailto fallback unless FORM_ENDPOINT is set
+    const FORM_ENDPOINT = ""; // Set your Formspree endpoint to enable server submission
+    const form = document.getElementById('leadform');
+    const toast = document.getElementById('toast');
+
+    function showToast(msg, ok=false){
+      toast.textContent = msg;
+      toast.style.display='block';
+      toast.className = 'toast' + (ok?' ok':'');
+      setTimeout(()=>toast.style.display='none', 5000);
+    }
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      try{
+        await waitForUploads();
+        if(FORM_ENDPOINT) {
+          const res = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Accept": "application/json" }, body: data });
+          if(res.ok){
+            showToast("Thanks! We’ll be in touch shortly.", true);
+            form.reset();
+            modal.classList.remove('open');
+            return;
+          }
+        }
+      }catch(err){ /* fall through */ }
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+      const body = encodeURIComponent(
+        `Business: ${payload.business}\nName: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone}\nSuburb: ${payload.suburb}\nInstagram: ${payload.instagram}\nPackage: ${payload.package}\nBilingual: ${payload.bilingual}\nMenu photos: ${payload.menu_photos}\nLogo: ${payload.logo}\nMenu file: ${payload.menu_file}\nNotes: ${payload.notes}`
+      );
+      window.location.href = `mailto:vbl.booster@gmail.com?subject=New mockup request&body=${body}`;
+      showToast("We opened your email app to finish the request.", true);
+    });
+  </script>
+</body>
+</html>
